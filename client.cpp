@@ -48,20 +48,22 @@ public:
             std::cerr << "An error oqurred: " << error.message() << std::endl;
         }
     }
+
+    void HelpBox()
+    {
+        std::cout << "- help\n"
+            << "       This help message\n"
+            << "- exit\n"
+            << "       Quit the session\n"
+            << "- connect <string>\n"
+            << "       Connect to server\n"
+            << "- send <string>\n"
+            << "       Send message\n"
+            << std::endl;
+    }
 };
 
-void HelpBox()
-{
-    std::cout << "- help\n"
-        << "       This help message\n"
-        << "- exit\n"
-        << "       Quit the session\n"
-        << "- connect <string>\n"
-        << "       Connect to server\n"
-        << "- send <string>\n"
-        << "       Send message\n"
-        << std::endl;
-}
+
 
 void CommandFunc(Client& client)
 {
@@ -78,7 +80,7 @@ void CommandFunc(Client& client)
         std::cin >> command;
         if (command == "help")
         {
-            HelpBox();
+            client.HelpBox();
         }
         else if (command == "connect" && !connected)
         {
